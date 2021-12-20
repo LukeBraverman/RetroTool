@@ -17,12 +17,11 @@
 
     <div class="componentGrid">
         <div class="componentBox">
-            <div class="componentCard">
+            <div class="componentCard" th:each="cardTemplateInfomation: ${positiveCardTemplates}">
                 <div class="componentHeader">
                     COMPONENT CARD
                 </div>
-                <div class="componentText">
-                    This is a sentence to show up in the component card on what went well.
+                <div class="componentText" th:text="${cardTemplateInfomation.cardText}">
                 </div>
             </div>
         </div>
