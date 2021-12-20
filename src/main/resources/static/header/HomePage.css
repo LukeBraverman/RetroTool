@@ -33,7 +33,9 @@
     border: 5px green dotted;
     grid-area: 2 / 2 / 50/ 35;
     justify-content: center;
-    align-content: center;
+    align-content: start;
+    flex-wrap: wrap;
+    overflow: scroll;
 }
 
 .componentCard {

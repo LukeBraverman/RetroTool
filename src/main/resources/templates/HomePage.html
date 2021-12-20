@@ -17,17 +17,19 @@
 
     <div class="componentGrid">
         <div class="componentBox">
-            <div class="componentCard" th:each="cardTemplateInfomation: ${positiveCardTemplates}">
-                <div class="componentHeader">
-                    COMPONENT CARD
-                </div>
-                <div class="componentText" th:text="${cardTemplateInfomation.cardText}">
+            <div th:each="cardTemplateInfomation: ${positiveCardTemplates}">
+                <div class="componentCard" >
+                    <div class="componentHeader" th:text="${cardTemplateInfomation.headerText}"/>
+                    <div class="componentText" th:text="${cardTemplateInfomation.bodyText}"/>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
+    </div>
+
+    </div>
+
+</div>
 
 </body>
 </html>
