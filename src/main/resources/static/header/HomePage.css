@@ -1,0 +1,42 @@
+
+.text {
+    text-decoration: underline;
+
+}
+
+.header{
+    background-color: #DAB785;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    grid-area: 2/1/span 5/ span 120;
+    max-width: 100%;
+
+}
+
+.componentGrid {
+    display: grid;
+    grid-template: repeat(10, 1rem) / repeat(20, 1rem);
+    grid-area: 9 / 2 / 60 / 119 ;
+    border: 5px darkmagenta dotted;
+
+
+}
+
+
+.box {
+    display: grid;
+    grid-template: repeat(100, 1rem) / repeat(150, 1rem);
+    border: 3px white dotted;
+    background-color: coral;
+    min-height: 100%;
+}
+
+
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+}
