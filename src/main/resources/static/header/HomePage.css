@@ -8,17 +8,24 @@
 
 .text {
     text-decoration: underline;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    margin-top: .5rem;
+
 
 }
 
 .header{
     background-color: #DAB785;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     text-align: center;
     grid-area: 2/1/span 5/ span 120;
     max-width: 100%;
 
+}
+.successModal {
+    margin-top: 1rem;
 }
 
 .componentGrid {
