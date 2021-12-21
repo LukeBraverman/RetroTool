@@ -22,12 +22,13 @@ public class HomePageService {
         cardTeamplateTwo.setHeaderText("header two");
         cardTeamplates.add(cardTeamplateTwo);
 
-        cardTeamplates.add(cardTeamplateTwo);
-        cardTeamplates.add(cardTeamplateTwo);
-        cardTeamplates.add(cardTeamplateTwo);
-        cardTeamplates.add(cardTeamplateTwo);
-        cardTeamplates.add(cardTeamplateTwo);
-        cardTeamplates.add(cardTeamplateTwo);
+
         return cardTeamplates;
     }
+
+    public void addCardTemplate(CardTeamplate cardTeamplate) {
+
+    }
+
+
 }
