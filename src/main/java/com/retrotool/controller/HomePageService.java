@@ -23,9 +23,11 @@ public class HomePageService {
         cardTeamplates.add(cardTeamplateTwo);
 
         cardTeamplates.add(cardTeamplateTwo);
-
         cardTeamplates.add(cardTeamplateTwo);
-
+        cardTeamplates.add(cardTeamplateTwo);
+        cardTeamplates.add(cardTeamplateTwo);
+        cardTeamplates.add(cardTeamplateTwo);
+        cardTeamplates.add(cardTeamplateTwo);
         return cardTeamplates;
     }
 }
