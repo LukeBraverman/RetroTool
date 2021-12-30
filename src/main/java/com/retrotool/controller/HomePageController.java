@@ -21,6 +21,7 @@ public class HomePageController {
         List<CardTeamplate> positiveCardTemplates = homePageService.getPositiveCardTemplates();
 
         CardTeamplate emptyPositiveCardTemplate = new CardTeamplate();
+        emptyPositiveCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
 
         model.addAttribute("positiveCardTemplate", emptyPositiveCardTemplate);
         model.addAttribute("headerText", headerText);

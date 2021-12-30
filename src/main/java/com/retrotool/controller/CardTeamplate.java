@@ -9,6 +9,8 @@ public class CardTeamplate {
 
     public String bodyText;
 
+    public TypeOfCardTemplate typeOfCardTemplate;
+
     public String getHeaderText() {
         return headerText;
     }
@@ -23,5 +25,13 @@ public class CardTeamplate {
 
     public void setBodyText(String bodyText) {
         this.bodyText = bodyText;
+    }
+
+    public TypeOfCardTemplate getTypeOfCardTemplate() {
+        return typeOfCardTemplate;
+    }
+
+    public void setTypeOfCardTemplate(TypeOfCardTemplate typeOfCardTemplate) {
+        this.typeOfCardTemplate = typeOfCardTemplate;
     }
 }

@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(HomePageController.class)
+@WebMvcTest(AddCardTemplateController.class)
 @ExtendWith(MockitoExtension.class)
 class AddCardTemplateControllerTest {
     @InjectMocks
@@ -32,12 +32,13 @@ class AddCardTemplateControllerTest {
         CardTeamplate dummyTestCardTemplate = new CardTeamplate();
         dummyTestCardTemplate.setHeaderText("test one");
         dummyTestCardTemplate.setBodyText("body text");
+        dummyTestCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
         Mockito.doNothing().when(homePageService).addCardTemplate(dummyTestCardTemplate);
 
 
         mockMvc.perform(post("/AddCardTemplate")
         .flashAttr("CardTemplate",dummyTestCardTemplate))
-                .andExpect(status().isOk());
+                .andExpect(redirectedUrl("/"));
 
         Mockito.verify(homePageService,Mockito.times(1)).addCardTemplate(dummyTestCardTemplate);
 
@@ -48,11 +49,12 @@ class AddCardTemplateControllerTest {
         CardTeamplate dummyTestCardTemplate = new CardTeamplate();
         dummyTestCardTemplate.setHeaderText("test one");
         dummyTestCardTemplate.setBodyText("body text");
+        dummyTestCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
+
         Mockito.doNothing().when(homePageService).addCardTemplate(dummyTestCardTemplate);
 
         mockMvc.perform(post("/AddCardTemplate")
                 .flashAttr("CardTemplate",dummyTestCardTemplate))
-                .andExpect(status().isOk())
                 .andExpect(redirectedUrl("/"));
 
 

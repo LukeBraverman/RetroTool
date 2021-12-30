@@ -13,17 +13,7 @@ public class AddCardTemplateController {
 
     @PostMapping("/AddCardTemplate")
     public String addCardTemplateToList(@ModelAttribute("CardTemplate") CardTeamplate cardTeamplate) {
-
-
-        //add card template to service layer
-
-        //redirect
-
-        //ensure not 404 error
-
-
-
-
-        return "";
+        homePageService.addCardTemplate(cardTeamplate);
+        return "redirect:/";
     }
 }
