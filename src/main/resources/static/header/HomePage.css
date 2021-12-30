@@ -2,7 +2,8 @@
     display: grid;
     grid-template: repeat(100, 1rem) / repeat(150, 1rem);
     border: 3px white dotted;
-    background-color: coral;
+    /*background-color: azure;*/
+    background-color: darkcyan;
     min-height: 100%;
 }
 

@@ -27,14 +27,18 @@
 
     </div>
 
+
+
     <div class="componentGrid">
         <div class="componentBox">
-            <div th:each="cardTemplateInfomation: ${positiveCardTemplates}">
-                <div class="componentCard" >
-                    <div class="componentHeader" th:text="${cardTemplateInfomation.headerText}"/>
-                    <div class="componentText" th:text="${cardTemplateInfomation.bodyText}"/>
+
+            <div class="card text-white bg-success mb-3" style="max-width: 18rem;" th:each="cardTemplateInfomation: ${positiveCardTemplates}">
+                <div class="card-header" th:text="${cardTemplateInfomation.headerText}"/>
+                <div class="card-body">
+                    <p class="card-text" th:text="${cardTemplateInfomation.bodyText}"/>
                 </div>
             </div>
+
         </div>
 
 
