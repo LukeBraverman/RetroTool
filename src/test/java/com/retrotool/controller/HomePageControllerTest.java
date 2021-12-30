@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -32,19 +33,29 @@ class HomePageControllerTest {
     private MockMvc mockMvc;
 
     @Test
+    public void whenHomeControllerCalled_200okReturned() throws Exception {
+        this.mockMvc.perform(get("/"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
     public void whenHomeControllerCalled_viewWithHeaderContainingStringRetroToolReturned() throws Exception {
         this.mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.view().name("HomePage"))
                 .andExpect(MockMvcResultMatchers.model().attribute("headerText", "RetroTool!"));
-
     }
 
     @Test
-    public void whenHomeControllerCalled_200okReturned() throws Exception {
+    public void whenHomeControllerCalled_viewWithObjectWithEmptyPositiveCardTemplateReturned() throws Exception {
+        CardTeamplate emptyPositiveCardTemplate = new CardTeamplate();
+
         this.mockMvc.perform(get("/"))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name("HomePage"))
+                .andExpect(MockMvcResultMatchers.model().attribute("positiveCardTemplate", emptyPositiveCardTemplate));
     }
+
 
     @Test
     public void whenGetAllPositiveTemplatesWithTwoTemplates_showTwoTemplates() throws Exception {

@@ -20,8 +20,13 @@ public class HomePageController {
 
         List<CardTeamplate> positiveCardTemplates = homePageService.getPositiveCardTemplates();
 
+        CardTeamplate emptyPositiveCardTemplate = new CardTeamplate();
+
+        model.addAttribute("positiveCardTemplate", emptyPositiveCardTemplate);
         model.addAttribute("headerText", headerText);
         model.addAttribute("positiveCardTemplates", positiveCardTemplates);
+
+
 
 
         return "HomePage";

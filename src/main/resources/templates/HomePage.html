@@ -50,21 +50,21 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="exampleModalLabel">New success message</h4>
             </div>
             <div class="modal-body">
-                <form>
+                <form th:object="${positiveCardTemplate}" th:action="@{/AddCardTemplate}" method="post" action="#">
                     <div class="form-group">
                         <label for="recipient-name" class="control-label">Enter header text:</label>
-                        <input type="text" class="form-control" id="recipient-name">
+                        <input type="text" class="form-control" id="recipient-name" th:field="*{headerText}">
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="control-label">Enter body text:</label>
-                        <textarea class="form-control" id="message-text"></textarea>
+                        <textarea class="form-control" id="message-text" th:field="*{bodyText}"></textarea>
                     </div>
                 </form>
             </div>
