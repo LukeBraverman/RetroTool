@@ -8,6 +8,9 @@ import java.util.List;
 @Service
 public class HomePageService {
 
+    public List<CardTeamplate> cardTeamplates = new ArrayList<>();
+
+
     public List<CardTeamplate> getPositiveCardTemplates() {
 
         List<CardTeamplate> cardTeamplates = new ArrayList<>();
