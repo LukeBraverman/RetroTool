@@ -11,3 +11,10 @@ public class RetrotoolApplication {
     }
 
 }
+
+/*
+TODO: Make a min width for modal so it does not stack
+TODO: Add a delete button on card so you can delete
+TODO: ADD 2 more colums, one negativem, one neutral
+TODO: Ensure service layer sorts list and returns only positive/nagative/neutral in 3 seperate methods
+ */

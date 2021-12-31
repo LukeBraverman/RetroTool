@@ -12,25 +12,11 @@ public class HomePageService {
 
 
     public List<CardTeamplate> getPositiveCardTemplates() {
-
-        List<CardTeamplate> cardTeamplates = new ArrayList<>();
-
-        CardTeamplate cardTeamplateOne = new CardTeamplate();
-        cardTeamplateOne.setBodyText("THIS IS A TEST BODY SENTENCE TO SEE IF IT WILL APPREAD");
-        cardTeamplateOne.setHeaderText("header one");
-        cardTeamplates.add(cardTeamplateOne);
-
-        CardTeamplate cardTeamplateTwo = new CardTeamplate();
-        cardTeamplateTwo.setBodyText("THIS IS A TEST BODY SENTENCE TO SEE IF IT WILL APPREAD");
-        cardTeamplateTwo.setHeaderText("header two");
-        cardTeamplates.add(cardTeamplateTwo);
-
-
         return cardTeamplates;
     }
 
     public void addCardTemplate(CardTeamplate cardTeamplate) {
-
+        cardTeamplates.add(cardTeamplate);
     }
 
 

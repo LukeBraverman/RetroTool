@@ -49,6 +49,7 @@ class HomePageControllerTest {
     @Test
     public void whenHomeControllerCalled_viewWithObjectWithEmptyPositiveCardTemplateReturned() throws Exception {
         CardTeamplate emptyPositiveCardTemplate = new CardTeamplate();
+        emptyPositiveCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
 
         this.mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
