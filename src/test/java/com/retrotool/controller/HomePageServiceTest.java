@@ -41,4 +41,15 @@ class HomePageServiceTest {
 
     }
 
+    @Test
+    public void deleteACardPositiveCardTemplate() {
+        CardTeamplate cardTeamplate = new CardTeamplate();
+        cardTeamplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
+        homePageService.cardTeamplates.add(cardTeamplate);
+
+        homePageService.deleteCardTemplate(cardTeamplate);
+
+        assertEquals(0,homePageService.cardTeamplates.size());
+    }
+
 }

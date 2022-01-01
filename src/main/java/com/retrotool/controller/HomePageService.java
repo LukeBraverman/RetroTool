@@ -19,5 +19,9 @@ public class HomePageService {
         cardTeamplates.add(cardTeamplate);
     }
 
+    public void deleteCardTemplate(CardTeamplate cardTeamplate) {
+        cardTeamplates.remove(cardTeamplate);
+    }
+
 
 }

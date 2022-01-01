@@ -1,5 +1,6 @@
 package com.retrotool.controller;
 
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -10,16 +11,16 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(AddCardTemplateController.class)
+@WebMvcTest(DeleteCardTemplateController.class)
 @ExtendWith(MockitoExtension.class)
-class AddCardTemplateControllerTest {
+public class DeleteCardTemplateControllerTests {
+
     @InjectMocks
-    AddCardTemplateController addCardTemplateController;
+    DeleteCardTemplateController deleteCardTemplateController;
 
     @MockBean
     HomePageService homePageService;
@@ -27,37 +28,36 @@ class AddCardTemplateControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-
     @Test
-    public void whenCardTemplatePosted_callServiceLayerAndAddTemplateToDAO() throws Exception {
-        CardTeamplate dummyTestCardTemplate = new CardTeamplate();
-        dummyTestCardTemplate.setHeaderText("test one");
-        dummyTestCardTemplate.setBodyText("body text");
-        dummyTestCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
-        Mockito.doNothing().when(homePageService).addCardTemplate(dummyTestCardTemplate);
-
-
-        mockMvc.perform(post("/AddCardTemplate")
-        .flashAttr("CardTemplate",dummyTestCardTemplate));
-
-        Mockito.verify(homePageService,Mockito.times(1)).addCardTemplate(dummyTestCardTemplate);
-
-    }
-
-    @Test
-    public void whenAddCardTemplateControllerCalledWithModelAttribute_expect301OkAndRedirectToHomeController() throws Exception {
+    public void whenCardTemplateDeleted_redirectToHomeController() throws Exception {
         CardTeamplate dummyTestCardTemplate = new CardTeamplate();
         dummyTestCardTemplate.setHeaderText("test one");
         dummyTestCardTemplate.setBodyText("body text");
         dummyTestCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
 
-        Mockito.doNothing().when(homePageService).addCardTemplate(dummyTestCardTemplate);
+        Mockito.doNothing().when(homePageService).deleteCardTemplate(dummyTestCardTemplate);
 
-        mockMvc.perform(post("/AddCardTemplate")
+        mockMvc.perform(delete("/DeleteCardTemplate")
                 .flashAttr("CardTemplate",dummyTestCardTemplate))
                 .andExpect(redirectedUrl("/"));
+    }
 
+    @Test
+    public void whenCardTemplateDeleted_CallServiceLayerAndDeleteCardTemplateFromDao() throws Exception {
+        CardTeamplate dummyTestCardTemplate = new CardTeamplate();
+        dummyTestCardTemplate.setHeaderText("test one");
+        dummyTestCardTemplate.setBodyText("body text");
+        dummyTestCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
+
+        Mockito.doNothing().when(homePageService).deleteCardTemplate(dummyTestCardTemplate);
+
+        mockMvc.perform(delete("/DeleteCardTemplate")
+                .flashAttr("CardTemplate",dummyTestCardTemplate));
+
+        Mockito.verify(homePageService,Mockito.times(1)).deleteCardTemplate(dummyTestCardTemplate);
 
     }
+
+
 
 }
