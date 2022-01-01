@@ -13,14 +13,13 @@ public class DeleteCardTemplateController {
     private HomePageService homePageService;
 
     @GetMapping("/DeleteCardTemplate")
-    public String deleteCardTemplate(@RequestParam UUID Id) {
-        System.out.println(Id + "<--- param recieved");
-//        homePageService.deleteCardTemplate(cardTeamplate);
+    public String deleteCardTemplate(@RequestParam UUID uuidOfCardTemplateToDelete) {
+        System.out.println(uuidOfCardTemplateToDelete + "<--- param recieved");
+        homePageService.deleteCardTemplate(uuidOfCardTemplateToDelete);
 
         /*
         todo:
-        Get delete button click to pass hardcoded param value to this controller
-        Get delete button click to pass softcoded param value to this controller
+
         pass param value to service BUT CHANGE SERVICE TESTS FIRST
         change logic in service layer to delete card based on UUID passed in
 

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class HomePageService {
@@ -13,8 +14,6 @@ public class HomePageService {
 
     public List<CardTemplate> getPositiveCardTemplates() {
         CardTemplate cardTemplate = new CardTemplate();
-        System.out.println(cardTemplate.getUuid() + "<-- UUID given ");
-        cardTemplates.add(cardTemplate); //ToDo: delete line 16; for testing only.
         return cardTemplates;
     }
 
@@ -22,8 +21,23 @@ public class HomePageService {
         cardTemplates.add(cardTemplate);
     }
 
-    public void deleteCardTemplate(CardTemplate cardTemplate) {
-        cardTemplates.remove(cardTemplate);
+    public void deleteCardTemplate(UUID UUIDofCardTemplateToDelete) {
+
+        CardTemplate cardTemplate = null;
+        System.out.println(UUIDofCardTemplateToDelete);
+        System.out.println(cardTemplates);
+        for (CardTemplate cardTemplateInList: cardTemplates) {
+
+            if ( cardTemplateInList.getUuid() == UUIDofCardTemplateToDelete) {
+                cardTemplate = cardTemplateInList;
+            }
+        }
+
+        if ( cardTemplate != null) {
+            cardTemplates.remove(cardTemplate);
+        }
+
+        System.out.println(cardTemplates);
     }
 
 

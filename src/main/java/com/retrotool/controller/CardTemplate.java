@@ -50,4 +50,14 @@ public class CardTemplate {
     public void setUuid(UUID uuid) {
         this.uuid = uuid;
     }
+
+    @Override
+    public String toString() {
+        return "CardTemplate{" +
+                "uuid=" + uuid +
+                ", headerText='" + headerText + '\'' +
+                ", bodyText='" + bodyText + '\'' +
+                ", typeOfCardTemplate=" + typeOfCardTemplate +
+                '}';
+    }
 }

@@ -34,10 +34,10 @@ public class DeleteCardTemplateControllerTests {
         dummyTestCardTemplate.setBodyText("body text");
         dummyTestCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
 
-        Mockito.doNothing().when(homePageService).deleteCardTemplate(dummyTestCardTemplate);
+        Mockito.doNothing().when(homePageService).deleteCardTemplate(dummyTestCardTemplate.uuid);
 
         mockMvc.perform(get("/DeleteCardTemplate")
-                .flashAttr("CardTemplate",dummyTestCardTemplate))
+                .param("uuidOfCardTemplateToDelete", String.valueOf(dummyTestCardTemplate.getUuid())))
                 .andExpect(redirectedUrl("/"));
     }
 
@@ -48,12 +48,12 @@ public class DeleteCardTemplateControllerTests {
         dummyTestCardTemplate.setBodyText("body text");
         dummyTestCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
 
-        Mockito.doNothing().when(homePageService).deleteCardTemplate(dummyTestCardTemplate);
+        Mockito.doNothing().when(homePageService).deleteCardTemplate(dummyTestCardTemplate.uuid);
 
         mockMvc.perform(get("/DeleteCardTemplate")
-                .flashAttr("CardTemplate",dummyTestCardTemplate));
+                .param("uuidOfCardTemplateToDelete", String.valueOf(dummyTestCardTemplate.getUuid())));
 
-        Mockito.verify(homePageService,Mockito.times(1)).deleteCardTemplate(dummyTestCardTemplate);
+        Mockito.verify(homePageService,Mockito.times(1)).deleteCardTemplate(dummyTestCardTemplate.uuid);
 
     }
 

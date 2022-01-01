@@ -47,7 +47,7 @@ class HomePageServiceTest {
         cardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
         homePageService.cardTemplates.add(cardTemplate);
 
-        homePageService.deleteCardTemplate(cardTemplate);
+        homePageService.deleteCardTemplate(cardTemplate.uuid);
 
         assertEquals(0,homePageService.cardTemplates.size());
     }
