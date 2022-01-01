@@ -8,19 +8,19 @@ import java.util.List;
 @Service
 public class HomePageService {
 
-    public List<CardTeamplate> cardTeamplates = new ArrayList<>();
+    public List<CardTeamplate> cardTemplates = new ArrayList<>();
 
 
     public List<CardTeamplate> getPositiveCardTemplates() {
-        return cardTeamplates;
+        return cardTemplates;
     }
 
     public void addCardTemplate(CardTeamplate cardTeamplate) {
-        cardTeamplates.add(cardTeamplate);
+        cardTemplates.add(cardTeamplate);
     }
 
     public void deleteCardTemplate(CardTeamplate cardTeamplate) {
-        cardTeamplates.remove(cardTeamplate);
+        cardTemplates.remove(cardTeamplate);
     }
 
 

@@ -22,7 +22,7 @@ class HomePageServiceTest {
         List<CardTeamplate> cardTeamplates = new ArrayList<>();
         CardTeamplate cardTeamplate = new CardTeamplate();
         cardTeamplates.add(cardTeamplate);
-        homePageService.cardTeamplates = cardTeamplates;
+        homePageService.cardTemplates = cardTeamplates;
 
         List<CardTeamplate> resultingCardTemplateList = homePageService.getPositiveCardTemplates();
 
@@ -37,7 +37,7 @@ class HomePageServiceTest {
 
         homePageService.addCardTemplate(cardTeamplate);
 
-        assertEquals(1,homePageService.cardTeamplates.size());
+        assertEquals(1,homePageService.cardTemplates.size());
 
     }
 
@@ -45,11 +45,11 @@ class HomePageServiceTest {
     public void deleteACardPositiveCardTemplate() {
         CardTeamplate cardTeamplate = new CardTeamplate();
         cardTeamplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
-        homePageService.cardTeamplates.add(cardTeamplate);
+        homePageService.cardTemplates.add(cardTeamplate);
 
         homePageService.deleteCardTemplate(cardTeamplate);
 
-        assertEquals(0,homePageService.cardTeamplates.size());
+        assertEquals(0,homePageService.cardTemplates.size());
     }
 
 }

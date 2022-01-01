@@ -11,8 +11,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 
 @WebMvcTest(DeleteCardTemplateController.class)
@@ -37,7 +36,7 @@ public class DeleteCardTemplateControllerTests {
 
         Mockito.doNothing().when(homePageService).deleteCardTemplate(dummyTestCardTemplate);
 
-        mockMvc.perform(delete("/DeleteCardTemplate")
+        mockMvc.perform(get("/DeleteCardTemplate")
                 .flashAttr("CardTemplate",dummyTestCardTemplate))
                 .andExpect(redirectedUrl("/"));
     }
@@ -51,7 +50,7 @@ public class DeleteCardTemplateControllerTests {
 
         Mockito.doNothing().when(homePageService).deleteCardTemplate(dummyTestCardTemplate);
 
-        mockMvc.perform(delete("/DeleteCardTemplate")
+        mockMvc.perform(get("/DeleteCardTemplate")
                 .flashAttr("CardTemplate",dummyTestCardTemplate));
 
         Mockito.verify(homePageService,Mockito.times(1)).deleteCardTemplate(dummyTestCardTemplate);
