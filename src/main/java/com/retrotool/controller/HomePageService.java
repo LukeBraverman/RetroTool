@@ -22,23 +22,14 @@ public class HomePageService {
     }
 
     public void deleteCardTemplate(UUID UUIDofCardTemplateToDelete) {
-
         CardTemplate cardTemplate = null;
-        System.out.println(UUIDofCardTemplateToDelete);
-        System.out.println(cardTemplates);
         for (CardTemplate cardTemplateInList: cardTemplates) {
-
-            if ( cardTemplateInList.getUuid() == UUIDofCardTemplateToDelete) {
+            if ( cardTemplateInList.getUuid().equals(UUIDofCardTemplateToDelete) ) {
                 cardTemplate = cardTemplateInList;
             }
         }
-
         if ( cardTemplate != null) {
             cardTemplates.remove(cardTemplate);
         }
-
-        System.out.println(cardTemplates);
     }
-
-
 }
