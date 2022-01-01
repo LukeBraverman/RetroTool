@@ -19,12 +19,12 @@ class HomePageServiceTest {
 
     @Test
     public void returnAllPositiveCardTemplatesAsAList() {
-        List<CardTeamplate> cardTeamplates = new ArrayList<>();
-        CardTeamplate cardTeamplate = new CardTeamplate();
-        cardTeamplates.add(cardTeamplate);
-        homePageService.cardTemplates = cardTeamplates;
+        List<CardTemplate> cardTemplates = new ArrayList<>();
+        CardTemplate cardTemplate = new CardTemplate();
+        cardTemplates.add(cardTemplate);
+        homePageService.cardTemplates = cardTemplates;
 
-        List<CardTeamplate> resultingCardTemplateList = homePageService.getPositiveCardTemplates();
+        List<CardTemplate> resultingCardTemplateList = homePageService.getPositiveCardTemplates();
 
         assertEquals(1,resultingCardTemplateList.size());
 
@@ -33,9 +33,9 @@ class HomePageServiceTest {
 
     @Test
     public void addAPositiveCardTemplateToList() {
-        CardTeamplate cardTeamplate = new CardTeamplate();
+        CardTemplate cardTemplate = new CardTemplate();
 
-        homePageService.addCardTemplate(cardTeamplate);
+        homePageService.addCardTemplate(cardTemplate);
 
         assertEquals(1,homePageService.cardTemplates.size());
 
@@ -43,11 +43,11 @@ class HomePageServiceTest {
 
     @Test
     public void deleteACardPositiveCardTemplate() {
-        CardTeamplate cardTeamplate = new CardTeamplate();
-        cardTeamplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
-        homePageService.cardTemplates.add(cardTeamplate);
+        CardTemplate cardTemplate = new CardTemplate();
+        cardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
+        homePageService.cardTemplates.add(cardTemplate);
 
-        homePageService.deleteCardTemplate(cardTeamplate);
+        homePageService.deleteCardTemplate(cardTemplate);
 
         assertEquals(0,homePageService.cardTemplates.size());
     }

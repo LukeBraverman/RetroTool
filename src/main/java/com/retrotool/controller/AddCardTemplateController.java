@@ -12,8 +12,8 @@ public class AddCardTemplateController {
     private HomePageService homePageService;
 
     @PostMapping("/AddCardTemplate")
-    public String addCardTemplateToList(@ModelAttribute("CardTemplate") CardTeamplate cardTeamplate) {
-        homePageService.addCardTemplate(cardTeamplate);
+    public String addCardTemplateToList(@ModelAttribute("CardTemplate") CardTemplate cardTemplate) {
+        homePageService.addCardTemplate(cardTemplate);
         return "redirect:/";
     }
 }

@@ -8,19 +8,22 @@ import java.util.List;
 @Service
 public class HomePageService {
 
-    public List<CardTeamplate> cardTemplates = new ArrayList<>();
+    public List<CardTemplate> cardTemplates = new ArrayList<>();
 
 
-    public List<CardTeamplate> getPositiveCardTemplates() {
+    public List<CardTemplate> getPositiveCardTemplates() {
+        CardTemplate cardTemplate = new CardTemplate();
+        System.out.println(cardTemplate.getUuid() + "<-- UUID given ");
+        cardTemplates.add(cardTemplate); //ToDo: delete line 16; for testing only.
         return cardTemplates;
     }
 
-    public void addCardTemplate(CardTeamplate cardTeamplate) {
-        cardTemplates.add(cardTeamplate);
+    public void addCardTemplate(CardTemplate cardTemplate) {
+        cardTemplates.add(cardTemplate);
     }
 
-    public void deleteCardTemplate(CardTeamplate cardTeamplate) {
-        cardTemplates.remove(cardTeamplate);
+    public void deleteCardTemplate(CardTemplate cardTemplate) {
+        cardTemplates.remove(cardTemplate);
     }
 
 

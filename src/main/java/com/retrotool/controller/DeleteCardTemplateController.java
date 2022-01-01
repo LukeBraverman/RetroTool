@@ -12,9 +12,9 @@ public class DeleteCardTemplateController {
 
     private HomePageService homePageService;
 
-    @GetMapping("/DeleteCardTemplate/{Id}")
-    public String deleteCardTemplate(Integer Id) {
-        System.out.println(Id);
+    @GetMapping("/DeleteCardTemplate")
+    public String deleteCardTemplate(@RequestParam UUID Id) {
+        System.out.println(Id + "<--- param recieved");
 //        homePageService.deleteCardTemplate(cardTeamplate);
 
         /*

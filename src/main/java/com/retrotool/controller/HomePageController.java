@@ -18,9 +18,9 @@ public class HomePageController {
 
         String headerText = "RetroTool!";
 
-        List<CardTeamplate> positiveCardTemplates = homePageService.getPositiveCardTemplates();
+        List<CardTemplate> positiveCardTemplates = homePageService.getPositiveCardTemplates();
 
-        CardTeamplate emptyPositiveCardTemplate = new CardTeamplate();
+        CardTemplate emptyPositiveCardTemplate = new CardTemplate();
         emptyPositiveCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
 
         model.addAttribute("positiveCardTemplate", emptyPositiveCardTemplate);

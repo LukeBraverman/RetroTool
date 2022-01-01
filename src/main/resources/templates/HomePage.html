@@ -37,9 +37,10 @@
                 <div class="card-body">
                     <p class="card-text" th:text="${cardTemplateInfomation.bodyText}"/>
                 </div>
-                <form th:action="@{/DeleteCardTemplate/__${5}__}" method="get" action="#">
-                    <button type="submit">Delete Card</button>
-                </form>
+                <a href="#" th:href="@{/DeleteCardTemplate(Id=${cardTemplateInfomation.uuid})}">CLick me</a>
+<!--                <form th:action="@{/DeleteCardTemplate(Id=5)}" method="get" action="#">-->
+<!--                    <button type="submit">Delete Card</button>-->
+<!--                </form>-->
             </div>
 
         </div>

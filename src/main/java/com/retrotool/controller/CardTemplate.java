@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.UUID;
 
 @Data
-public class CardTeamplate {
+public class CardTemplate {
 
     public UUID uuid;
 
@@ -15,7 +15,7 @@ public class CardTeamplate {
 
     public TypeOfCardTemplate typeOfCardTemplate;
 
-    public CardTeamplate() {
+    public CardTemplate() {
         uuid = UUID.randomUUID();
     }
 

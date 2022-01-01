@@ -48,7 +48,7 @@ class HomePageControllerTest {
 
 //    @Test
 //    public void whenHomeControllerCalled_viewWithObjectWithEmptyPositiveCardTemplateReturned() throws Exception {
-//        CardTeamplate emptyPositiveCardTemplate = new CardTeamplate();
+//        CardTemplate emptyPositiveCardTemplate = new CardTemplate();
 //        emptyPositiveCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
 //
 //        this.mockMvc.perform(get("/"))
@@ -65,16 +65,16 @@ class HomePageControllerTest {
     @Test
     public void whenGetAllPositiveTemplatesWithTwoTemplates_showTwoTemplates() throws Exception {
 
-        List<CardTeamplate> twoPositiveCardTemplatesInAList = new ArrayList<>();
-        CardTeamplate cardTeamplateOne = new CardTeamplate();
-        cardTeamplateOne.setHeaderText("HeaderOne");
-        cardTeamplateOne.setBodyText("BodyOne");
-        CardTeamplate cardTeamplateTwo = new CardTeamplate();
-        cardTeamplateTwo.setHeaderText("HeaderTwo");
-        cardTeamplateTwo.setBodyText("BodyTwo");
+        List<CardTemplate> twoPositiveCardTemplatesInAList = new ArrayList<>();
+        CardTemplate cardTemplateOne = new CardTemplate();
+        cardTemplateOne.setHeaderText("HeaderOne");
+        cardTemplateOne.setBodyText("BodyOne");
+        CardTemplate cardTemplateTwo = new CardTemplate();
+        cardTemplateTwo.setHeaderText("HeaderTwo");
+        cardTemplateTwo.setBodyText("BodyTwo");
 
-        twoPositiveCardTemplatesInAList.add(cardTeamplateOne);
-        twoPositiveCardTemplatesInAList.add(cardTeamplateTwo);
+        twoPositiveCardTemplatesInAList.add(cardTemplateOne);
+        twoPositiveCardTemplatesInAList.add(cardTemplateTwo);
 
         when(homePageService.getPositiveCardTemplates()).thenReturn(twoPositiveCardTemplatesInAList);
 
@@ -86,7 +86,7 @@ class HomePageControllerTest {
 
     @Test
     public void whenGetAllPositiveTemplatesWithEmptyList_showZeroTemplates() throws Exception {
-        List<CardTeamplate> emptyListOfCardTemplates = Collections.emptyList();
+        List<CardTemplate> emptyListOfCardTemplates = Collections.emptyList();
 
         when(homePageService.getPositiveCardTemplates()).thenReturn(emptyListOfCardTemplates);
 
@@ -98,49 +98,49 @@ class HomePageControllerTest {
 
     @Test
     public void whenGetAllPositiveTemplatesWithTenTemplates_showTenTemplates() throws Exception {
-        List<CardTeamplate> tenPositiveCardTemplatesInAList = new ArrayList<>();
+        List<CardTemplate> tenPositiveCardTemplatesInAList = new ArrayList<>();
 
-        CardTeamplate cardTeamplateOne = new CardTeamplate();
-        cardTeamplateOne.setHeaderText("1");
-        cardTeamplateOne.setBodyText("1");
-        CardTeamplate cardTeamplateTwo = new CardTeamplate();
-        cardTeamplateTwo.setHeaderText("2");
-        cardTeamplateTwo.setBodyText("2");
-        CardTeamplate cardTeamplateThree = new CardTeamplate();
-        cardTeamplateThree.setHeaderText("3");
-        cardTeamplateThree.setBodyText("3");
-        CardTeamplate cardTeamplateFour = new CardTeamplate();
-        cardTeamplateFour.setHeaderText("4");
-        cardTeamplateFour.setBodyText("4");
-        CardTeamplate cardTeamplateFive = new CardTeamplate();
-        cardTeamplateFive.setHeaderText("5");
-        cardTeamplateFive.setBodyText("5");
-        CardTeamplate cardTeamplateSix = new CardTeamplate();
-        cardTeamplateSix.setHeaderText("6");
-        cardTeamplateSix.setBodyText("6");
-        CardTeamplate cardTeamplateSeven = new CardTeamplate();
-        cardTeamplateSeven.setHeaderText("7");
-        cardTeamplateSeven.setBodyText("7");
-        CardTeamplate cardTeamplateEight = new CardTeamplate();
-        cardTeamplateEight.setHeaderText("8");
-        cardTeamplateEight.setBodyText("8");
-        CardTeamplate cardTeamplateNine = new CardTeamplate();
-        cardTeamplateNine.setHeaderText("9");
-        cardTeamplateNine.setBodyText("9");
-        CardTeamplate cardTeamplateTen = new CardTeamplate();
-        cardTeamplateTen.setHeaderText("10");
-        cardTeamplateTen.setBodyText("10");
+        CardTemplate cardTemplateOne = new CardTemplate();
+        cardTemplateOne.setHeaderText("1");
+        cardTemplateOne.setBodyText("1");
+        CardTemplate cardTemplateTwo = new CardTemplate();
+        cardTemplateTwo.setHeaderText("2");
+        cardTemplateTwo.setBodyText("2");
+        CardTemplate cardTemplateThree = new CardTemplate();
+        cardTemplateThree.setHeaderText("3");
+        cardTemplateThree.setBodyText("3");
+        CardTemplate cardTemplateFour = new CardTemplate();
+        cardTemplateFour.setHeaderText("4");
+        cardTemplateFour.setBodyText("4");
+        CardTemplate cardTemplateFive = new CardTemplate();
+        cardTemplateFive.setHeaderText("5");
+        cardTemplateFive.setBodyText("5");
+        CardTemplate cardTemplateSix = new CardTemplate();
+        cardTemplateSix.setHeaderText("6");
+        cardTemplateSix.setBodyText("6");
+        CardTemplate cardTemplateSeven = new CardTemplate();
+        cardTemplateSeven.setHeaderText("7");
+        cardTemplateSeven.setBodyText("7");
+        CardTemplate cardTemplateEight = new CardTemplate();
+        cardTemplateEight.setHeaderText("8");
+        cardTemplateEight.setBodyText("8");
+        CardTemplate cardTemplateNine = new CardTemplate();
+        cardTemplateNine.setHeaderText("9");
+        cardTemplateNine.setBodyText("9");
+        CardTemplate cardTemplateTen = new CardTemplate();
+        cardTemplateTen.setHeaderText("10");
+        cardTemplateTen.setBodyText("10");
 
-        tenPositiveCardTemplatesInAList.add(cardTeamplateOne);
-        tenPositiveCardTemplatesInAList.add(cardTeamplateTwo);
-        tenPositiveCardTemplatesInAList.add(cardTeamplateThree);
-        tenPositiveCardTemplatesInAList.add(cardTeamplateFour);
-        tenPositiveCardTemplatesInAList.add(cardTeamplateFive);
-        tenPositiveCardTemplatesInAList.add(cardTeamplateSix);
-        tenPositiveCardTemplatesInAList.add(cardTeamplateSeven);
-        tenPositiveCardTemplatesInAList.add(cardTeamplateEight);
-        tenPositiveCardTemplatesInAList.add(cardTeamplateNine);
-        tenPositiveCardTemplatesInAList.add(cardTeamplateTen);
+        tenPositiveCardTemplatesInAList.add(cardTemplateOne);
+        tenPositiveCardTemplatesInAList.add(cardTemplateTwo);
+        tenPositiveCardTemplatesInAList.add(cardTemplateThree);
+        tenPositiveCardTemplatesInAList.add(cardTemplateFour);
+        tenPositiveCardTemplatesInAList.add(cardTemplateFive);
+        tenPositiveCardTemplatesInAList.add(cardTemplateSix);
+        tenPositiveCardTemplatesInAList.add(cardTemplateSeven);
+        tenPositiveCardTemplatesInAList.add(cardTemplateEight);
+        tenPositiveCardTemplatesInAList.add(cardTemplateNine);
+        tenPositiveCardTemplatesInAList.add(cardTemplateTen);
 
         when(homePageService.getPositiveCardTemplates()).thenReturn(tenPositiveCardTemplatesInAList);
 

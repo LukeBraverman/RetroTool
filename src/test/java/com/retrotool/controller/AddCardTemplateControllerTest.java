@@ -10,10 +10,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(AddCardTemplateController.class)
 @ExtendWith(MockitoExtension.class)
@@ -30,7 +28,7 @@ class AddCardTemplateControllerTest {
 
     @Test
     public void whenCardTemplatePosted_callServiceLayerAndAddTemplateToDAO() throws Exception {
-        CardTeamplate dummyTestCardTemplate = new CardTeamplate();
+        CardTemplate dummyTestCardTemplate = new CardTemplate();
         dummyTestCardTemplate.setHeaderText("test one");
         dummyTestCardTemplate.setBodyText("body text");
         dummyTestCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
@@ -46,7 +44,7 @@ class AddCardTemplateControllerTest {
 
     @Test
     public void whenAddCardTemplateControllerCalledWithModelAttribute_expect301OkAndRedirectToHomeController() throws Exception {
-        CardTeamplate dummyTestCardTemplate = new CardTeamplate();
+        CardTemplate dummyTestCardTemplate = new CardTemplate();
         dummyTestCardTemplate.setHeaderText("test one");
         dummyTestCardTemplate.setBodyText("body text");
         dummyTestCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);

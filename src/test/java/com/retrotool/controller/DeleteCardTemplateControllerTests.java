@@ -29,7 +29,7 @@ public class DeleteCardTemplateControllerTests {
 
     @Test
     public void whenCardTemplateDeleted_redirectToHomeController() throws Exception {
-        CardTeamplate dummyTestCardTemplate = new CardTeamplate();
+        CardTemplate dummyTestCardTemplate = new CardTemplate();
         dummyTestCardTemplate.setHeaderText("test one");
         dummyTestCardTemplate.setBodyText("body text");
         dummyTestCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
@@ -43,7 +43,7 @@ public class DeleteCardTemplateControllerTests {
 
     @Test
     public void whenCardTemplateDeleted_CallServiceLayerAndDeleteCardTemplateFromDao() throws Exception {
-        CardTeamplate dummyTestCardTemplate = new CardTeamplate();
+        CardTemplate dummyTestCardTemplate = new CardTemplate();
         dummyTestCardTemplate.setHeaderText("test one");
         dummyTestCardTemplate.setBodyText("body text");
         dummyTestCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
