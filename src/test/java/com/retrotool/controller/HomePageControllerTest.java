@@ -133,7 +133,7 @@ class HomePageControllerTest {
         CardTemplateGenerator cardTemplateGenerator = new CardTemplateGenerator();
         List<CardTemplate> twoNeutralCardTemplatesInAList = cardTemplateGenerator.returnAVariableAmountOfCardTemplatesWithGivenType(2, TypeOfCardTemplate.NEUTRAL);
 
-        when(homePageService.getPositiveCardTemplates()).thenReturn(twoNeutralCardTemplatesInAList);
+        when(homePageService.getNeutralCardTemplates()).thenReturn(twoNeutralCardTemplatesInAList);
 
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
@@ -159,7 +159,7 @@ class HomePageControllerTest {
         CardTemplateGenerator cardTemplateGenerator = new CardTemplateGenerator();
         List<CardTemplate> tenNegativeCardTemplatesInAList = cardTemplateGenerator.returnAVariableAmountOfCardTemplatesWithGivenType(10,TypeOfCardTemplate.NEGATIVE);
 
-        when(homePageService.getNegativeCardTemplates()).thenReturn(tenNegativeCardTemplatesInAList);
+        when(homePageService.getNeutralCardTemplates()).thenReturn(tenNegativeCardTemplatesInAList);
 
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
@@ -172,7 +172,7 @@ class HomePageControllerTest {
         CardTemplateGenerator cardTemplateGenerator = new CardTemplateGenerator();
         List<CardTemplate> tenNeutralCardTemplatesInAList = cardTemplateGenerator.returnAVariableAmountOfCardTemplatesWithGivenType(10,TypeOfCardTemplate.NEUTRAL);
 
-        when(homePageService.getNegativeCardTemplates()).thenReturn(tenNeutralCardTemplatesInAList);
+        when(homePageService.getNeutralCardTemplates()).thenReturn(tenNeutralCardTemplatesInAList);
 
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())

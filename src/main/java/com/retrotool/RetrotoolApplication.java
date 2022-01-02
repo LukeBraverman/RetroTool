@@ -14,5 +14,4 @@ public class RetrotoolApplication {
 
 /*
 TODO: ADD 2 more colums, one negativem, one neutral
-TODO: Ensure service layer sorts list and returns only positive/nagative/neutral in 3 seperate methods
  */
