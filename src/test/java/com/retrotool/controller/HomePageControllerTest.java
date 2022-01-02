@@ -159,7 +159,7 @@ class HomePageControllerTest {
         CardTemplateGenerator cardTemplateGenerator = new CardTemplateGenerator();
         List<CardTemplate> tenNegativeCardTemplatesInAList = cardTemplateGenerator.returnAVariableAmountOfCardTemplatesWithGivenType(10,TypeOfCardTemplate.NEGATIVE);
 
-        when(homePageService.getNeutralCardTemplates()).thenReturn(tenNegativeCardTemplatesInAList);
+        when(homePageService.getNegativeCardTemplates()).thenReturn(tenNegativeCardTemplatesInAList);
 
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())

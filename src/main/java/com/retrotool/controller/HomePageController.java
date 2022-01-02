@@ -27,19 +27,23 @@ public class HomePageController {
 
         CardTemplate emptyPositiveCardTemplate = new CardTemplate();
         emptyPositiveCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
+
+
+
         CardTemplate emptyNegativeCardTemplate = new CardTemplate();
-        emptyPositiveCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.NEGATIVE);
+        emptyNegativeCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.NEGATIVE);
         CardTemplate emptyNeutralCardTemplate = new CardTemplate();
-        emptyPositiveCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.NEUTRAL);
+        emptyNeutralCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.NEUTRAL);
+
 
         model.addAttribute("positiveCardTemplate", emptyPositiveCardTemplate);
-        model.addAttribute("negativeCardTemplate", emptyNegativeCardTemplate);
-        model.addAttribute("neutralCardTemplate", emptyNeutralCardTemplate);
+//        model.addAttribute("negativeCardTemplate", emptyNegativeCardTemplate);
+//        model.addAttribute("neutralCardTemplate", emptyNeutralCardTemplate);
 
         model.addAttribute("headerText", headerText);
         model.addAttribute("positiveCardTemplates", positiveCardTemplates);
-        model.addAttribute("negativeCardTemplates", negativeCardTemplates);
-        model.addAttribute("neutralCardTemplates", neutralCardTemplates);
+//        model.addAttribute("negativeCardTemplates", negativeCardTemplates);
+//        model.addAttribute("neutralCardTemplates", neutralCardTemplates);
 
 
 
