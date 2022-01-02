@@ -13,8 +13,33 @@ public class HomePageService {
 
 
     public List<CardTemplate> getPositiveCardTemplates() {
-        CardTemplate cardTemplate = new CardTemplate();
-        return cardTemplates;
+        List<CardTemplate> positiveCardTemplates = new ArrayList<>();
+        for (CardTemplate cardTemplate: cardTemplates) {
+            if (cardTemplate.getTypeOfCardTemplate() == TypeOfCardTemplate.POSITIVE) {
+                positiveCardTemplates.add(cardTemplate);
+            }
+        }
+        return positiveCardTemplates;
+    }
+
+    public List<CardTemplate> getNegativeCardTemplates() {
+        List<CardTemplate> negativeCardTemplates = new ArrayList<>();
+        for (CardTemplate cardTemplate: cardTemplates) {
+            if (cardTemplate.getTypeOfCardTemplate() == TypeOfCardTemplate.NEGATIVE) {
+                negativeCardTemplates.add(cardTemplate);
+            }
+        }
+        return negativeCardTemplates;
+    }
+
+    public List<CardTemplate> getNeutralCardTemplates() {
+        List<CardTemplate> neutralCardTemplates = new ArrayList<>();
+        for (CardTemplate cardTemplate: cardTemplates) {
+            if (cardTemplate.getTypeOfCardTemplate() == TypeOfCardTemplate.NEUTRAL) {
+                neutralCardTemplates.add(cardTemplate);
+            }
+        }
+        return neutralCardTemplates;
     }
 
     public void addCardTemplate(CardTemplate cardTemplate) {
@@ -22,6 +47,7 @@ public class HomePageService {
     }
 
     public void deleteCardTemplate(UUID UUIDofCardTemplateToDelete) {
+        //Replace with .removeIf( x -> x.getUuid().equals(UUIDofCardTemplateToDelete))
         CardTemplate cardTemplate = null;
         for (CardTemplate cardTemplateInList: cardTemplates) {
             if ( cardTemplateInList.getUuid().equals(UUIDofCardTemplateToDelete) ) {

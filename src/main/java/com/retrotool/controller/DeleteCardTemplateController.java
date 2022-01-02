@@ -14,16 +14,7 @@ public class DeleteCardTemplateController {
 
     @GetMapping("/DeleteCardTemplate")
     public String deleteCardTemplate(@RequestParam UUID uuidOfCardTemplateToDelete) {
-        System.out.println(uuidOfCardTemplateToDelete + "<--- param recieved");
         homePageService.deleteCardTemplate(uuidOfCardTemplateToDelete);
-
-        /*
-        todo:
-
-        pass param value to service BUT CHANGE SERVICE TESTS FIRST
-        change logic in service layer to delete card based on UUID passed in
-
-         */
         return "redirect:/";
     }
 

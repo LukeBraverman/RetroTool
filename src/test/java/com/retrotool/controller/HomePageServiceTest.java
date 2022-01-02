@@ -20,13 +20,71 @@ class HomePageServiceTest {
     @Test
     public void returnAllPositiveCardTemplatesAsAList() {
         List<CardTemplate> cardTemplates = new ArrayList<>();
-        CardTemplate cardTemplate = new CardTemplate();
-        cardTemplates.add(cardTemplate);
+        CardTemplate positiveCardTemplate = new CardTemplate();
+        positiveCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
+        CardTemplate negativeCardTemplate = new CardTemplate();
+        negativeCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.NEGATIVE);
+        CardTemplate neutralCardTemplate = new CardTemplate();
+        neutralCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.NEUTRAL);
+
+
+        cardTemplates.add(positiveCardTemplate);
+        cardTemplates.add(positiveCardTemplate);
+        cardTemplates.add(negativeCardTemplate);
+        cardTemplates.add(neutralCardTemplate);
         homePageService.cardTemplates = cardTemplates;
 
         List<CardTemplate> resultingCardTemplateList = homePageService.getPositiveCardTemplates();
 
-        assertEquals(1,resultingCardTemplateList.size());
+        assertEquals(2,resultingCardTemplateList.size());
+
+
+    }
+
+    @Test
+    public void returnAllNegativeCardTemplatesAsAList() {
+        List<CardTemplate> cardTemplates = new ArrayList<>();
+        CardTemplate positiveCardTemplate = new CardTemplate();
+        positiveCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
+        CardTemplate negativeCardTemplate = new CardTemplate();
+        negativeCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.NEGATIVE);
+        CardTemplate neutralCardTemplate = new CardTemplate();
+        neutralCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.NEUTRAL);
+
+
+        cardTemplates.add(positiveCardTemplate);
+        cardTemplates.add(negativeCardTemplate);
+        cardTemplates.add(negativeCardTemplate);
+        cardTemplates.add(neutralCardTemplate);
+        homePageService.cardTemplates = cardTemplates;
+
+        List<CardTemplate> resultingCardTemplateList = homePageService.getNegativeCardTemplates();
+
+        assertEquals(2,resultingCardTemplateList.size());
+
+
+    }
+
+    @Test
+    public void returnAllNeutralCardTemplatesAsAList() {
+        List<CardTemplate> cardTemplates = new ArrayList<>();
+        CardTemplate positiveCardTemplate = new CardTemplate();
+        positiveCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
+        CardTemplate negativeCardTemplate = new CardTemplate();
+        negativeCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.NEGATIVE);
+        CardTemplate neutralCardTemplate = new CardTemplate();
+        neutralCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.NEUTRAL);
+
+
+        cardTemplates.add(positiveCardTemplate);
+        cardTemplates.add(negativeCardTemplate);
+        cardTemplates.add(neutralCardTemplate);
+        cardTemplates.add(neutralCardTemplate);
+        homePageService.cardTemplates = cardTemplates;
+
+        List<CardTemplate> resultingCardTemplateList = homePageService.getNeutralCardTemplates();
+
+        assertEquals(2,resultingCardTemplateList.size());
 
 
     }
