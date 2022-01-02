@@ -19,6 +19,11 @@ public class HomePageController {
         String headerText = "RetroTool!";
 
         List<CardTemplate> positiveCardTemplates = homePageService.getPositiveCardTemplates();
+        List<CardTemplate> negativeCardTemplates = homePageService.getNegativeCardTemplates();
+        List<CardTemplate> neutralCardTemplates = homePageService.getNeutralCardTemplates();
+
+
+
 
         CardTemplate emptyPositiveCardTemplate = new CardTemplate();
         emptyPositiveCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);

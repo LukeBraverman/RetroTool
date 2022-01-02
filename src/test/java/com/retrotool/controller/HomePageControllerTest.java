@@ -60,29 +60,11 @@ class HomePageControllerTest {
     Test above is broken. I added a random UUID generation function. This was to allow fo delete to work. Since UUID is random, the card template
     created in the given section, will not have the same uuid in ad the 'positive card template' which is generated during run time in the controller.
     When i refactor this positive card template generation to the service layer, i can revisit this test and fix.
+
+    Repeat for negative and neutral
      */
 
-    @Test
-    public void whenGetAllPositiveTemplatesWithTwoTemplates_showTwoTemplates() throws Exception {
 
-        List<CardTemplate> twoPositiveCardTemplatesInAList = new ArrayList<>();
-        CardTemplate cardTemplateOne = new CardTemplate();
-        cardTemplateOne.setHeaderText("HeaderOne");
-        cardTemplateOne.setBodyText("BodyOne");
-        CardTemplate cardTemplateTwo = new CardTemplate();
-        cardTemplateTwo.setHeaderText("HeaderTwo");
-        cardTemplateTwo.setBodyText("BodyTwo");
-
-        twoPositiveCardTemplatesInAList.add(cardTemplateOne);
-        twoPositiveCardTemplatesInAList.add(cardTemplateTwo);
-
-        when(homePageService.getPositiveCardTemplates()).thenReturn(twoPositiveCardTemplatesInAList);
-
-         mockMvc.perform(get("/"))
-                 .andExpect(status().isOk())
-                 .andExpect(MockMvcResultMatchers.view().name("HomePage"))
-                 .andExpect(MockMvcResultMatchers.model().attribute("positiveCardTemplates",twoPositiveCardTemplatesInAList));
-    }
 
     @Test
     public void whenGetAllPositiveTemplatesWithEmptyList_showZeroTemplates() throws Exception {
@@ -97,50 +79,72 @@ class HomePageControllerTest {
     }
 
     @Test
+    public void whenGetAllNegativeTemplatesWithEmptyList_showZeroTemplates() throws Exception {
+        List<CardTemplate> emptyListOfCardTemplates = Collections.emptyList();
+
+        when(homePageService.getNegativeCardTemplates()).thenReturn(emptyListOfCardTemplates);
+
+        mockMvc.perform(get("/"))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name("HomePage"))
+                .andExpect(MockMvcResultMatchers.model().attribute("negativeCardTemplates",emptyListOfCardTemplates));
+    }
+
+    @Test
+    public void whenGetAllNeutralTemplatesWithEmptyList_showZeroTemplates() throws Exception {
+        List<CardTemplate> emptyListOfCardTemplates = Collections.emptyList();
+
+        when(homePageService.getPositiveCardTemplates()).thenReturn(emptyListOfCardTemplates);
+
+        mockMvc.perform(get("/"))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name("HomePage"))
+                .andExpect(MockMvcResultMatchers.model().attribute("neutralCardTemplates",emptyListOfCardTemplates));
+    }
+
+    @Test
+    public void whenGetAllPositiveTemplatesWithTwoTemplates_showTwoTemplates() throws Exception {
+        CardTemplateGenerator cardTemplateGenerator = new CardTemplateGenerator();
+        List<CardTemplate> twoPositiveCardTemplatesInAList = cardTemplateGenerator.returnAVariableAmountOfCardTemplatesWithGivenType(2, TypeOfCardTemplate.POSITIVE);
+
+        when(homePageService.getPositiveCardTemplates()).thenReturn(twoPositiveCardTemplatesInAList);
+
+        mockMvc.perform(get("/"))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name("HomePage"))
+                .andExpect(MockMvcResultMatchers.model().attribute("positiveCardTemplates",twoPositiveCardTemplatesInAList));
+    }
+
+    @Test
+    public void whenGetAllNegativeTemplatesWithTwoTemplates_showTwoTemplates() throws Exception {
+        CardTemplateGenerator cardTemplateGenerator = new CardTemplateGenerator();
+        List<CardTemplate> twoNegativeCardTemplatesInAList = cardTemplateGenerator.returnAVariableAmountOfCardTemplatesWithGivenType(2, TypeOfCardTemplate.NEGATIVE);
+
+        when(homePageService.getNegativeCardTemplates()).thenReturn(twoNegativeCardTemplatesInAList);
+
+        mockMvc.perform(get("/"))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name("HomePage"))
+                .andExpect(MockMvcResultMatchers.model().attribute("negativeCardTemplates",twoNegativeCardTemplatesInAList));
+    }
+
+    @Test
+    public void whenGetAllNeutralTemplatesWithTwoTemplates_showTwoTemplates() throws Exception {
+        CardTemplateGenerator cardTemplateGenerator = new CardTemplateGenerator();
+        List<CardTemplate> twoNeutralCardTemplatesInAList = cardTemplateGenerator.returnAVariableAmountOfCardTemplatesWithGivenType(2, TypeOfCardTemplate.NEUTRAL);
+
+        when(homePageService.getPositiveCardTemplates()).thenReturn(twoNeutralCardTemplatesInAList);
+
+        mockMvc.perform(get("/"))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name("HomePage"))
+                .andExpect(MockMvcResultMatchers.model().attribute("neutralCardTemplates",twoNeutralCardTemplatesInAList));
+    }
+
+    @Test
     public void whenGetAllPositiveTemplatesWithTenTemplates_showTenTemplates() throws Exception {
-        List<CardTemplate> tenPositiveCardTemplatesInAList = new ArrayList<>();
-
-        CardTemplate cardTemplateOne = new CardTemplate();
-        cardTemplateOne.setHeaderText("1");
-        cardTemplateOne.setBodyText("1");
-        CardTemplate cardTemplateTwo = new CardTemplate();
-        cardTemplateTwo.setHeaderText("2");
-        cardTemplateTwo.setBodyText("2");
-        CardTemplate cardTemplateThree = new CardTemplate();
-        cardTemplateThree.setHeaderText("3");
-        cardTemplateThree.setBodyText("3");
-        CardTemplate cardTemplateFour = new CardTemplate();
-        cardTemplateFour.setHeaderText("4");
-        cardTemplateFour.setBodyText("4");
-        CardTemplate cardTemplateFive = new CardTemplate();
-        cardTemplateFive.setHeaderText("5");
-        cardTemplateFive.setBodyText("5");
-        CardTemplate cardTemplateSix = new CardTemplate();
-        cardTemplateSix.setHeaderText("6");
-        cardTemplateSix.setBodyText("6");
-        CardTemplate cardTemplateSeven = new CardTemplate();
-        cardTemplateSeven.setHeaderText("7");
-        cardTemplateSeven.setBodyText("7");
-        CardTemplate cardTemplateEight = new CardTemplate();
-        cardTemplateEight.setHeaderText("8");
-        cardTemplateEight.setBodyText("8");
-        CardTemplate cardTemplateNine = new CardTemplate();
-        cardTemplateNine.setHeaderText("9");
-        cardTemplateNine.setBodyText("9");
-        CardTemplate cardTemplateTen = new CardTemplate();
-        cardTemplateTen.setHeaderText("10");
-        cardTemplateTen.setBodyText("10");
-
-        tenPositiveCardTemplatesInAList.add(cardTemplateOne);
-        tenPositiveCardTemplatesInAList.add(cardTemplateTwo);
-        tenPositiveCardTemplatesInAList.add(cardTemplateThree);
-        tenPositiveCardTemplatesInAList.add(cardTemplateFour);
-        tenPositiveCardTemplatesInAList.add(cardTemplateFive);
-        tenPositiveCardTemplatesInAList.add(cardTemplateSix);
-        tenPositiveCardTemplatesInAList.add(cardTemplateSeven);
-        tenPositiveCardTemplatesInAList.add(cardTemplateEight);
-        tenPositiveCardTemplatesInAList.add(cardTemplateNine);
-        tenPositiveCardTemplatesInAList.add(cardTemplateTen);
+        CardTemplateGenerator cardTemplateGenerator = new CardTemplateGenerator();
+        List<CardTemplate> tenPositiveCardTemplatesInAList = cardTemplateGenerator.returnAVariableAmountOfCardTemplatesWithGivenType(10,TypeOfCardTemplate.POSITIVE);
 
         when(homePageService.getPositiveCardTemplates()).thenReturn(tenPositiveCardTemplatesInAList);
 
@@ -148,7 +152,32 @@ class HomePageControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.view().name("HomePage"))
                 .andExpect(MockMvcResultMatchers.model().attribute("positiveCardTemplates",tenPositiveCardTemplatesInAList));
+    }
 
+    @Test
+    public void whenGetAllNegativeTemplatesWithTenTemplates_showTenTemplates() throws Exception {
+        CardTemplateGenerator cardTemplateGenerator = new CardTemplateGenerator();
+        List<CardTemplate> tenNegativeCardTemplatesInAList = cardTemplateGenerator.returnAVariableAmountOfCardTemplatesWithGivenType(10,TypeOfCardTemplate.NEGATIVE);
+
+        when(homePageService.getNegativeCardTemplates()).thenReturn(tenNegativeCardTemplatesInAList);
+
+        mockMvc.perform(get("/"))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name("HomePage"))
+                .andExpect(MockMvcResultMatchers.model().attribute("negativeCardTemplates",tenNegativeCardTemplatesInAList));
+    }
+
+    @Test
+    public void whenGetAllNeutralTemplatesWithTenTemplates_showTenTemplates() throws Exception {
+        CardTemplateGenerator cardTemplateGenerator = new CardTemplateGenerator();
+        List<CardTemplate> tenNeutralCardTemplatesInAList = cardTemplateGenerator.returnAVariableAmountOfCardTemplatesWithGivenType(10,TypeOfCardTemplate.NEUTRAL);
+
+        when(homePageService.getNegativeCardTemplates()).thenReturn(tenNeutralCardTemplatesInAList);
+
+        mockMvc.perform(get("/"))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name("HomePage"))
+                .andExpect(MockMvcResultMatchers.model().attribute("neutralCardTemplates",tenNeutralCardTemplatesInAList));
     }
 
 
