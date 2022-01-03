@@ -21,7 +21,15 @@
         <h1 th:text="${headerText}" class="text"/>
 
         <div class="successModal">
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add new success modal</button>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add new success card</button>
+        </div>
+
+        <div class="negativeModal">
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#negativeCardModal" data-whatever="@mdo">Add new negative card</button>
+        </div>
+
+        <div class="neutralModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#neutralCardModal" data-whatever="@mdo">Add for the future</button>
         </div>
 
 
@@ -30,6 +38,7 @@
 
 
     <div class="componentGrid">
+
         <div class="componentBox">
 
             <div class="card text-white bg-success mb-3" style="max-width: 20rem; min-width: 20rem" th:each="cardTemplateInfomation: ${positiveCardTemplates}">
@@ -42,9 +51,38 @@
 
         </div>
 
+        <div class="componentBoxMiddle">
+
+            <div class="card text-white bg-danger mb-3" style="max-width: 20rem; min-width: 20rem" th:each="cardTemplateInfomation: ${negativeCardTemplates}">
+                <div class="card-header" th:text="${cardTemplateInfomation.headerText}"/>
+                <div class="card-body">
+                    <p class="card-text" th:text="${cardTemplateInfomation.bodyText}"/>
+                </div>
+                <a href="#" th:href="@{/DeleteCardTemplate(uuidOfCardTemplateToDelete=${cardTemplateInfomation.uuid})}">CLick me</a>
+            </div>
+
+        </div>
+
+        <div class="componentBoxEnd">
+
+            <div class="card text-white bg-white mb-3" style="max-width: 20rem; min-width: 20rem" th:each="cardTemplateInfomation: ${neutralCardTemplates}">
+                <div class="card-header" th:text="${cardTemplateInfomation.headerText}"/>
+                <div class="card-body">
+                    <p class="card-text" th:text="${cardTemplateInfomation.bodyText}"/>
+                </div>
+                <a href="#" th:href="@{/DeleteCardTemplate(uuidOfCardTemplateToDelete=${cardTemplateInfomation.uuid})}">CLick me</a>
+            </div>
+
+        </div>
+
+
 
 
     </div>
+
+
+
+
 
     </div>
 
@@ -78,6 +116,62 @@
     </div>
 </div>
 
+<!-- Modal 2 -->
+<div class="modal fade" id="negativeCardModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="negativeCardModalLable">New negative message</h4>
+            </div>
+            <div class="modal-body">
+                <form th:object="${negativeCardTemplate}" th:action="@{/AddNegativeCardTemplate}" method="post" action="#">
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">Enter header text:</label>
+                        <input type="text" class="form-control" id="negativeCard" th:field="*{headerText}">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Enter body text:</label>
+                        <textarea class="form-control" id="negativeCardTextArea" th:field="*{bodyText}"></textarea>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal 3 -->
+<div class="modal fade" id="neutralCardModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="neutralCardModalLable">New negative message</h4>
+            </div>
+            <div class="modal-body">
+                <form th:object="${neutralCardTemplate}" th:action="@{/AddNeutralCardTemplate}" method="post" action="#">
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">Enter header text:</label>
+                        <input type="text" class="form-control" id="neutralCard" th:field="*{headerText}">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Enter body text:</label>
+                        <textarea class="form-control" id="neutralCardModalTextArea" th:field="*{bodyText}"></textarea>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>

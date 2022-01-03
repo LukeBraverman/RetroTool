@@ -37,13 +37,13 @@ public class HomePageController {
 
 
         model.addAttribute("positiveCardTemplate", emptyPositiveCardTemplate);
-//        model.addAttribute("negativeCardTemplate", emptyNegativeCardTemplate);
-//        model.addAttribute("neutralCardTemplate", emptyNeutralCardTemplate);
+        model.addAttribute("negativeCardTemplate", emptyNegativeCardTemplate);
+        model.addAttribute("neutralCardTemplate", emptyNeutralCardTemplate);
 
         model.addAttribute("headerText", headerText);
         model.addAttribute("positiveCardTemplates", positiveCardTemplates);
-//        model.addAttribute("negativeCardTemplates", negativeCardTemplates);
-//        model.addAttribute("neutralCardTemplates", neutralCardTemplates);
+        model.addAttribute("negativeCardTemplates", negativeCardTemplates);
+        model.addAttribute("neutralCardTemplates", neutralCardTemplates);
 
 
 

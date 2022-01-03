@@ -29,6 +29,17 @@
     margin-top: 1rem;
 }
 
+.negativeModal {
+    margin-left: 3rem;
+    margin-top: 1rem;
+    margin-right: 3rem;
+}
+
+.neutralModal {
+    margin-top: 1rem;
+    margin-right: 3rem;
+}
+
 .componentGrid {
     display: grid;
     grid-template: repeat(100, 1rem) / repeat(150, 1rem);
@@ -40,6 +51,26 @@
     display: flex;
     border: 5px green dotted;
     grid-area: 2 / 2 / 50/ 35;
+    justify-content: center;
+    align-content: start;
+    flex-wrap: wrap;
+    overflow: scroll;
+}
+
+.componentBoxMiddle {
+    display: flex;
+    border: 5px green dotted;
+    grid-area: 2 / 40 / 50/ 73;
+    justify-content: center;
+    align-content: start;
+    flex-wrap: wrap;
+    overflow: scroll;
+}
+
+.componentBoxEnd {
+    display: flex;
+    border: 5px green dotted;
+    grid-area: 2 / 78 / 50/ 111;
     justify-content: center;
     align-content: start;
     flex-wrap: wrap;
