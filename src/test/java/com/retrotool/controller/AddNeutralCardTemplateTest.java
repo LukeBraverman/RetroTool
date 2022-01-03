@@ -37,7 +37,7 @@ class AddNeutralCardTemplateTest {
         Mockito.doNothing().when(homePageService).addCardTemplate(dummyTestCardTemplate);
 
         mockMvc.perform(post("/AddNeutralCardTemplate")
-                .flashAttr("CardTemplate",dummyTestCardTemplate))
+                .flashAttr("NeutralCardTemplate",dummyTestCardTemplate))
                 .andExpect(redirectedUrl("/"));
     }
 
@@ -50,7 +50,7 @@ class AddNeutralCardTemplateTest {
         Mockito.doNothing().when(homePageService).addCardTemplate(dummyTestCardTemplate);
 
         mockMvc.perform(post("/AddNeutralCardTemplate")
-                .flashAttr("CardTemplate",dummyTestCardTemplate));
+                .flashAttr("NeutralCardTemplate",dummyTestCardTemplate));
 
         assertEquals(TypeOfCardTemplate.NEUTRAL,dummyTestCardTemplate.getTypeOfCardTemplate());
     }
@@ -65,7 +65,7 @@ class AddNeutralCardTemplateTest {
 
 
         mockMvc.perform(post("/AddNeutralCardTemplate")
-                .flashAttr("CardTemplate",dummyTestCardTemplate));
+                .flashAttr("NeutralCardTemplate",dummyTestCardTemplate));
 
         Mockito.verify(homePageService,Mockito.times(1)).addCardTemplate(dummyTestCardTemplate);
 

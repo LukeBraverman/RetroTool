@@ -13,7 +13,7 @@ public class AddCardTemplateController {
 
     @PostMapping("/AddPositiveCardTemplate")
     public String addPositiveCardTemplateToList(@ModelAttribute("CardTemplate") CardTemplate cardTemplate) {
-         cardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
+        cardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
         homePageService.addCardTemplate(cardTemplate);
         return "redirect:/";
     }

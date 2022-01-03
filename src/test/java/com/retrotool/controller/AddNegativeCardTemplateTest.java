@@ -36,7 +36,7 @@ class AddNegativeCardTemplateTest {
         Mockito.doNothing().when(homePageService).addCardTemplate(dummyTestCardTemplate);
 
         mockMvc.perform(post("/AddNegativeCardTemplate")
-                .flashAttr("CardTemplate",dummyTestCardTemplate))
+                .flashAttr("NegativeCardTemplate",dummyTestCardTemplate))
                 .andExpect(redirectedUrl("/"));
     }
 
@@ -49,7 +49,7 @@ class AddNegativeCardTemplateTest {
         Mockito.doNothing().when(homePageService).addCardTemplate(dummyTestCardTemplate);
 
         mockMvc.perform(post("/AddNegativeCardTemplate")
-                .flashAttr("CardTemplate",dummyTestCardTemplate));
+                .flashAttr("NegativeCardTemplate",dummyTestCardTemplate));
 
         assertEquals(TypeOfCardTemplate.NEGATIVE,dummyTestCardTemplate.getTypeOfCardTemplate());
     }
@@ -64,7 +64,7 @@ class AddNegativeCardTemplateTest {
 
 
         mockMvc.perform(post("/AddNegativeCardTemplate")
-                .flashAttr("CardTemplate",dummyTestCardTemplate));
+                .flashAttr("NegativeCardTemplate",dummyTestCardTemplate));
 
         Mockito.verify(homePageService,Mockito.times(1)).addCardTemplate(dummyTestCardTemplate);
 
