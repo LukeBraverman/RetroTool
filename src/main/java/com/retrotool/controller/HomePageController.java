@@ -15,40 +15,23 @@ public class HomePageController {
 
     @GetMapping("/")
     public String HomePage(Model model) {
-
-        String headerText = "RetroTool!";
+        String headerText = homePageService.generateHeaderText();
 
         List<CardTemplate> positiveCardTemplates = homePageService.getPositiveCardTemplates();
         List<CardTemplate> negativeCardTemplates = homePageService.getNegativeCardTemplates();
         List<CardTemplate> neutralCardTemplates = homePageService.getNeutralCardTemplates();
 
-
-
-
-        CardTemplate emptyPositiveCardTemplate = new CardTemplate();
-        emptyPositiveCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
-
-
-
-        CardTemplate emptyNegativeCardTemplate = new CardTemplate();
-        emptyNegativeCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.NEGATIVE);
-        CardTemplate emptyNeutralCardTemplate = new CardTemplate();
-        emptyNeutralCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.NEUTRAL);
-
+        CardTemplate emptyPositiveCardTemplate = homePageService.returnAEmptyCardTemplatesWithGivenType(TypeOfCardTemplate.POSITIVE);
+        CardTemplate emptyNegativeCardTemplate = homePageService.returnAEmptyCardTemplatesWithGivenType(TypeOfCardTemplate.NEGATIVE);
+        CardTemplate emptyNeutralCardTemplate = homePageService.returnAEmptyCardTemplatesWithGivenType(TypeOfCardTemplate.NEUTRAL);
 
         model.addAttribute("positiveCardTemplate", emptyPositiveCardTemplate);
         model.addAttribute("negativeCardTemplate", emptyNegativeCardTemplate);
         model.addAttribute("neutralCardTemplate", emptyNeutralCardTemplate);
-
         model.addAttribute("headerText", headerText);
         model.addAttribute("positiveCardTemplates", positiveCardTemplates);
         model.addAttribute("negativeCardTemplates", negativeCardTemplates);
         model.addAttribute("neutralCardTemplates", neutralCardTemplates);
-
-
-
-
-
 
         return "HomePage";
     }

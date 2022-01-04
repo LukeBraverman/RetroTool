@@ -1,5 +1,7 @@
 package com.retrotool.controller;
 
+import ch.qos.logback.core.util.COWArrayList;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -38,12 +40,21 @@ class HomePageControllerTest {
                 .andExpect(status().isOk());
     }
 
+    @BeforeEach
+    void setUp() {
+        when(homePageService.generateHeaderText()).thenReturn("Retro Tool!");
+        when(homePageService.returnAEmptyCardTemplatesWithGivenType(TypeOfCardTemplate.POSITIVE)).thenReturn(new CardTemplate());
+        when(homePageService.returnAEmptyCardTemplatesWithGivenType(TypeOfCardTemplate.NEGATIVE)).thenReturn(new CardTemplate());
+        when(homePageService.returnAEmptyCardTemplatesWithGivenType(TypeOfCardTemplate.NEUTRAL)).thenReturn(new CardTemplate());
+
+    }
+
     @Test
     public void whenHomeControllerCalled_viewWithHeaderContainingStringRetroToolReturned() throws Exception {
         this.mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.view().name("HomePage"))
-                .andExpect(MockMvcResultMatchers.model().attribute("headerText", "RetroTool!"));
+                .andExpect(MockMvcResultMatchers.model().attribute("headerText", "Retro Tool!"));
     }
 
 //    @Test

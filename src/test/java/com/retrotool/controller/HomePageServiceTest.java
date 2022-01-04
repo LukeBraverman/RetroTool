@@ -110,4 +110,39 @@ class HomePageServiceTest {
         assertEquals(0,homePageService.cardTemplates.size());
     }
 
+    @Test
+    public void returnRetroToolWhenGenerateHeaderText() {
+        String generatedText = homePageService.generateHeaderText();
+        assertEquals("Retro tool",generatedText);
+    }
+
+    @Test
+    public void whenGenerateAPositiveCardTemplate_returnAEmptyPositieCardTemplate() {
+        CardTemplate cardTemplateExpected = new CardTemplate();
+        cardTemplateExpected.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
+
+        CardTemplate cardTemplateGenerated = homePageService.returnAEmptyCardTemplatesWithGivenType(TypeOfCardTemplate.POSITIVE);
+        cardTemplateGenerated.setUuid(cardTemplateExpected.getUuid());
+        assertEquals(cardTemplateExpected,cardTemplateGenerated);
+    }
+
+    @Test
+    public void whenGenerateANegativeCardTemplate_returnAEmptyNegativeCardTemplate() {
+        CardTemplate cardTemplateExpected = new CardTemplate();
+        cardTemplateExpected.setTypeOfCardTemplate(TypeOfCardTemplate.NEGATIVE);
+
+        CardTemplate cardTemplateGenerated = homePageService.returnAEmptyCardTemplatesWithGivenType(TypeOfCardTemplate.NEGATIVE);
+        cardTemplateExpected.setUuid(cardTemplateGenerated.getUuid());
+        assertEquals(cardTemplateExpected,cardTemplateGenerated);
+    }
+
+    @Test
+    public void whenGenerateANeutralCardTemplate_returnAEmptyNeutralCardTemplate() {
+        CardTemplate cardTemplateExpected = new CardTemplate();
+        cardTemplateExpected.setTypeOfCardTemplate(TypeOfCardTemplate.NEUTRAL);
+
+        CardTemplate cardTemplateGenerated = homePageService.returnAEmptyCardTemplatesWithGivenType(TypeOfCardTemplate.NEUTRAL);
+        cardTemplateExpected.setUuid(cardTemplateGenerated.getUuid());
+        assertEquals(cardTemplateExpected,cardTemplateGenerated);
+    }
 }

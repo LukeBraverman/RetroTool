@@ -3,6 +3,7 @@ package com.retrotool.controller;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -47,15 +48,16 @@ public class HomePageService {
     }
 
     public void deleteCardTemplate(UUID UUIDofCardTemplateToDelete) {
-        //Replace with .removeIf( x -> x.getUuid().equals(UUIDofCardTemplateToDelete))
-        CardTemplate cardTemplate = null;
-        for (CardTemplate cardTemplateInList: cardTemplates) {
-            if ( cardTemplateInList.getUuid().equals(UUIDofCardTemplateToDelete) ) {
-                cardTemplate = cardTemplateInList;
-            }
-        }
-        if ( cardTemplate != null) {
-            cardTemplates.remove(cardTemplate);
-        }
+        cardTemplates.removeIf( cardTemplateInList -> cardTemplateInList.getUuid().equals(UUIDofCardTemplateToDelete));
+    }
+
+    public String generateHeaderText() {
+        return "Retro tool";
+    }
+
+    public CardTemplate returnAEmptyCardTemplatesWithGivenType(TypeOfCardTemplate typeOfCardTemplateToCreate) {
+            CardTemplate cardTemplate = new CardTemplate();
+            cardTemplate.setTypeOfCardTemplate(typeOfCardTemplateToCreate);
+        return cardTemplate;
     }
 }
