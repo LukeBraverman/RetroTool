@@ -14,7 +14,6 @@ public class AddNegativeCardTemplate {
     @PostMapping("/AddNegativeCardTemplate")
     public String addNegativeCardTemplateToList(@ModelAttribute("NegativeCardTemplate") CardTemplate cardTemplate) {
         cardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.NEGATIVE);
-        System.out.println(cardTemplate);
         homePageService.addCardTemplate(cardTemplate);
         return "redirect:/";
     }

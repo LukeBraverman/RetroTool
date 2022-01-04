@@ -105,7 +105,7 @@ class HomePageServiceTest {
         cardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
         homePageService.cardTemplates.add(cardTemplate);
 
-        homePageService.deleteCardTemplate(cardTemplate.uuid);
+        homePageService.deleteCardTemplateWithGivenUUID(cardTemplate.uuid);
 
         assertEquals(0,homePageService.cardTemplates.size());
     }
@@ -144,5 +144,71 @@ class HomePageServiceTest {
         CardTemplate cardTemplateGenerated = homePageService.returnAEmptyCardTemplatesWithGivenType(TypeOfCardTemplate.NEUTRAL);
         cardTemplateExpected.setUuid(cardTemplateGenerated.getUuid());
         assertEquals(cardTemplateExpected,cardTemplateGenerated);
+    }
+
+    @Test
+    public void whenRequestingPositiveCardTemplates_returnPositiveCardTemplatesFromCollection() {
+        List<CardTemplate> cardTemplates = new ArrayList<>();
+        CardTemplate positiveCardTemplate = new CardTemplate();
+        positiveCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
+        CardTemplate negativeCardTemplate = new CardTemplate();
+        negativeCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.NEGATIVE);
+        CardTemplate neutralCardTemplate = new CardTemplate();
+        neutralCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.NEUTRAL);
+
+
+        cardTemplates.add(positiveCardTemplate);
+        cardTemplates.add(positiveCardTemplate);
+        cardTemplates.add(negativeCardTemplate);
+        cardTemplates.add(neutralCardTemplate);
+        homePageService.cardTemplates = cardTemplates;
+
+        List<CardTemplate> resultingCardTemplateList = homePageService.returnListOfCardTemplatesWithGivenTypeFromMainCollectionOfCardTemplates(TypeOfCardTemplate.POSITIVE);
+
+        assertEquals(2,resultingCardTemplateList.size());
+    }
+
+    @Test
+    public void whenRequestingNegativeCardTemplates_returnNegativeCardTemplatesFromCollection() {
+        List<CardTemplate> cardTemplates = new ArrayList<>();
+        CardTemplate positiveCardTemplate = new CardTemplate();
+        positiveCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
+        CardTemplate negativeCardTemplate = new CardTemplate();
+        negativeCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.NEGATIVE);
+        CardTemplate neutralCardTemplate = new CardTemplate();
+        neutralCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.NEUTRAL);
+
+
+        cardTemplates.add(positiveCardTemplate);
+        cardTemplates.add(negativeCardTemplate);
+        cardTemplates.add(negativeCardTemplate);
+        cardTemplates.add(neutralCardTemplate);
+        homePageService.cardTemplates = cardTemplates;
+
+        List<CardTemplate> resultingCardTemplateList = homePageService.returnListOfCardTemplatesWithGivenTypeFromMainCollectionOfCardTemplates(TypeOfCardTemplate.NEGATIVE);
+
+        assertEquals(2,resultingCardTemplateList.size());
+    }
+
+    @Test
+    public void whenRequestingNeutralCardTemplates_returnNeutralCardTemplatesFromCollection() {
+        List<CardTemplate> cardTemplates = new ArrayList<>();
+        CardTemplate positiveCardTemplate = new CardTemplate();
+        positiveCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
+        CardTemplate negativeCardTemplate = new CardTemplate();
+        negativeCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.NEGATIVE);
+        CardTemplate neutralCardTemplate = new CardTemplate();
+        neutralCardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.NEUTRAL);
+
+
+        cardTemplates.add(positiveCardTemplate);
+        cardTemplates.add(negativeCardTemplate);
+        cardTemplates.add(neutralCardTemplate);
+        cardTemplates.add(neutralCardTemplate);
+        homePageService.cardTemplates = cardTemplates;
+
+        List<CardTemplate> resultingCardTemplateList = homePageService.returnListOfCardTemplatesWithGivenTypeFromMainCollectionOfCardTemplates(TypeOfCardTemplate.NEUTRAL);
+
+        assertEquals(2,resultingCardTemplateList.size());
     }
 }

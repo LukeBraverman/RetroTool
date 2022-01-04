@@ -14,40 +14,35 @@ public class HomePageService {
 
 
     public List<CardTemplate> getPositiveCardTemplates() {
-        List<CardTemplate> positiveCardTemplates = new ArrayList<>();
-        for (CardTemplate cardTemplate: cardTemplates) {
-            if (cardTemplate.getTypeOfCardTemplate() == TypeOfCardTemplate.POSITIVE) {
-                positiveCardTemplates.add(cardTemplate);
-            }
-        }
+        List<CardTemplate> positiveCardTemplates = returnListOfCardTemplatesWithGivenTypeFromMainCollectionOfCardTemplates(TypeOfCardTemplate.POSITIVE);
         return positiveCardTemplates;
     }
 
     public List<CardTemplate> getNegativeCardTemplates() {
-        List<CardTemplate> negativeCardTemplates = new ArrayList<>();
-        for (CardTemplate cardTemplate: cardTemplates) {
-            if (cardTemplate.getTypeOfCardTemplate() == TypeOfCardTemplate.NEGATIVE) {
-                negativeCardTemplates.add(cardTemplate);
-            }
-        }
+        List<CardTemplate> negativeCardTemplates = returnListOfCardTemplatesWithGivenTypeFromMainCollectionOfCardTemplates(TypeOfCardTemplate.NEGATIVE);
         return negativeCardTemplates;
     }
 
     public List<CardTemplate> getNeutralCardTemplates() {
-        List<CardTemplate> neutralCardTemplates = new ArrayList<>();
+        List<CardTemplate> neutralCardTemplates = returnListOfCardTemplatesWithGivenTypeFromMainCollectionOfCardTemplates(TypeOfCardTemplate.NEUTRAL);
+        return neutralCardTemplates;
+    }
+
+    public List<CardTemplate> returnListOfCardTemplatesWithGivenTypeFromMainCollectionOfCardTemplates(TypeOfCardTemplate typeOfCardTemplateToGetFromCollection) {
+        List<CardTemplate> cardTemplatesWithGivenType = new ArrayList<>();
         for (CardTemplate cardTemplate: cardTemplates) {
-            if (cardTemplate.getTypeOfCardTemplate() == TypeOfCardTemplate.NEUTRAL) {
-                neutralCardTemplates.add(cardTemplate);
+            if (cardTemplate.getTypeOfCardTemplate() == typeOfCardTemplateToGetFromCollection) {
+                cardTemplatesWithGivenType.add(cardTemplate);
             }
         }
-        return neutralCardTemplates;
+        return cardTemplatesWithGivenType;
     }
 
     public void addCardTemplate(CardTemplate cardTemplate) {
         cardTemplates.add(cardTemplate);
     }
 
-    public void deleteCardTemplate(UUID UUIDofCardTemplateToDelete) {
+    public void deleteCardTemplateWithGivenUUID(UUID UUIDofCardTemplateToDelete) {
         cardTemplates.removeIf( cardTemplateInList -> cardTemplateInList.getUuid().equals(UUIDofCardTemplateToDelete));
     }
 

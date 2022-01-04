@@ -12,6 +12,5 @@ public class RetrotoolApplication {
 
 }
 
-/*
-TODO: ADD 2 more colums, one negativem, one neutral
- */
+
+

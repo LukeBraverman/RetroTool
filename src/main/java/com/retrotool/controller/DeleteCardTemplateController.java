@@ -14,7 +14,7 @@ public class DeleteCardTemplateController {
 
     @GetMapping("/DeleteCardTemplate")
     public String deleteCardTemplate(@RequestParam UUID uuidOfCardTemplateToDelete) {
-        homePageService.deleteCardTemplate(uuidOfCardTemplateToDelete);
+        homePageService.deleteCardTemplateWithGivenUUID(uuidOfCardTemplateToDelete);
         return "redirect:/";
     }
 
