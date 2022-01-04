@@ -21,15 +21,15 @@
         <h1 th:text="${headerText}" class="text"/>
 
         <div class="successModal">
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add new success card</button>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Click to add a team success card</button>
         </div>
 
         <div class="negativeModal">
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#negativeCardModal" data-whatever="@mdo">Add new negative card</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#negativeCardModal" data-whatever="@mdo">Click to add a team improvement card</button>
         </div>
 
         <div class="neutralModal">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#neutralCardModal" data-whatever="@mdo">Add for the future</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#neutralCardModal" data-whatever="@mdo">Click to add a point for the future card</button>
         </div>
 
 
@@ -46,7 +46,9 @@
                 <div class="card-body">
                     <p class="card-text" th:text="${cardTemplateInfomation.bodyText}"/>
                 </div>
-                <a href="#" th:href="@{/DeleteCardTemplate(uuidOfCardTemplateToDelete=${cardTemplateInfomation.uuid})}">CLick me</a>
+                <div class="deleteCardPositive">
+                    <a style="color: black;" href="#" th:href="@{/DeleteCardTemplate(uuidOfCardTemplateToDelete=${cardTemplateInfomation.uuid})}">Delete card</a>
+                </div>
             </div>
 
         </div>
@@ -58,8 +60,10 @@
                 <div class="card-body">
                     <p class="card-text" th:text="${cardTemplateInfomation.bodyText}"/>
                 </div>
-                <a href="#" th:href="@{/DeleteCardTemplate(uuidOfCardTemplateToDelete=${cardTemplateInfomation.uuid})}">CLick me</a>
-            </div>
+                <div class="deleteCardMiddle">
+                     <a style="color: black;" href="#" th:href="@{/DeleteCardTemplate(uuidOfCardTemplateToDelete=${cardTemplateInfomation.uuid})}">Delete card</a>
+                </div>
+                </div>
 
         </div>
 
@@ -70,8 +74,10 @@
                 <div class="card-body">
                     <p class="card-text" th:text="${cardTemplateInfomation.bodyText}"/>
                 </div>
-                <a href="#" th:href="@{/DeleteCardTemplate(uuidOfCardTemplateToDelete=${cardTemplateInfomation.uuid})}">CLick me</a>
-            </div>
+                <div class="deleteCardEnd">
+                    <a style="color: black;" href="#" th:href="@{/DeleteCardTemplate(uuidOfCardTemplateToDelete=${cardTemplateInfomation.uuid})}">CLick me</a>
+                </div>
+                </div>
 
         </div>
 
