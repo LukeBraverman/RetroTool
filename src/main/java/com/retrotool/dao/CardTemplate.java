@@ -1,5 +1,6 @@
-package com.retrotool.controller;
+package com.retrotool.dao;
 
+import com.retrotool.dao.TypeOfCardTemplate;
 import lombok.Data;
 
 import java.util.UUID;

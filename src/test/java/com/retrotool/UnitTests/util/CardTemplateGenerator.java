@@ -1,4 +1,7 @@
-package com.retrotool.controller;
+package com.retrotool.UnitTests.util;
+
+import com.retrotool.dao.CardTemplate;
+import com.retrotool.dao.TypeOfCardTemplate;
 
 import java.util.ArrayList;
 import java.util.Collections;

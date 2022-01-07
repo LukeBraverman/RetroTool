@@ -1,5 +1,9 @@
-package com.retrotool.controller;
+package com.retrotool.UnitTests.controller;
 
+import com.retrotool.controller.AddNegativeCardTemplateController;
+import com.retrotool.dao.CardTemplate;
+import com.retrotool.dao.TypeOfCardTemplate;
+import com.retrotool.service.HomePageService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -14,11 +18,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 
-@WebMvcTest(AddNegativeCardTemplate.class)
+@WebMvcTest(AddNegativeCardTemplateController.class)
 @ExtendWith(MockitoExtension.class)
-class AddNegativeCardTemplateTest {
+class AddNegativeCardTemplateControllerTest {
     @InjectMocks
-    AddNegativeCardTemplate addNegativeCardTemplate;
+    AddNegativeCardTemplateController addNegativeCardTemplateController;
 
     @MockBean
     HomePageService homePageService;

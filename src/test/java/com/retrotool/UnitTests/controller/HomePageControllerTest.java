@@ -1,6 +1,10 @@
-package com.retrotool.controller;
+package com.retrotool.UnitTests.controller;
 
-import ch.qos.logback.core.util.COWArrayList;
+import com.retrotool.UnitTests.util.CardTemplateGenerator;
+import com.retrotool.controller.HomePageController;
+import com.retrotool.dao.CardTemplate;
+import com.retrotool.dao.TypeOfCardTemplate;
+import com.retrotool.service.HomePageService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,7 +16,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 

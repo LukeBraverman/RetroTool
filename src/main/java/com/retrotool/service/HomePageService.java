@@ -1,17 +1,22 @@
-package com.retrotool.controller;
+package com.retrotool.service;
 
+import com.retrotool.dao.CardTemplate;
+import com.retrotool.dao.TypeOfCardTemplate;
+import com.retrotool.dao.CardTemplateArrayList;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
 @Service
+@AllArgsConstructor
 public class HomePageService {
 
-    public List<CardTemplate> cardTemplates = new ArrayList<>();
 
+
+    private CardTemplateArrayList cardTemplateArrayList;
 
     public List<CardTemplate> getPositiveCardTemplates() {
         List<CardTemplate> positiveCardTemplates = returnListOfCardTemplatesWithGivenTypeFromMainCollectionOfCardTemplates(TypeOfCardTemplate.POSITIVE);
@@ -30,7 +35,8 @@ public class HomePageService {
 
     public List<CardTemplate> returnListOfCardTemplatesWithGivenTypeFromMainCollectionOfCardTemplates(TypeOfCardTemplate typeOfCardTemplateToGetFromCollection) {
         List<CardTemplate> cardTemplatesWithGivenType = new ArrayList<>();
-        for (CardTemplate cardTemplate: cardTemplates) {
+        List<CardTemplate> cardTemplatesWithAllTypeToSort = cardTemplateArrayList.getCardTemplates();
+        for (CardTemplate cardTemplate: cardTemplatesWithAllTypeToSort) {
             if (cardTemplate.getTypeOfCardTemplate() == typeOfCardTemplateToGetFromCollection) {
                 cardTemplatesWithGivenType.add(cardTemplate);
             }
@@ -39,11 +45,11 @@ public class HomePageService {
     }
 
     public void addCardTemplate(CardTemplate cardTemplate) {
-        cardTemplates.add(cardTemplate);
+        cardTemplateArrayList.getCardTemplates().add(cardTemplate);
     }
 
     public void deleteCardTemplateWithGivenUUID(UUID UUIDofCardTemplateToDelete) {
-        cardTemplates.removeIf( cardTemplateInList -> cardTemplateInList.getUuid().equals(UUIDofCardTemplateToDelete));
+        cardTemplateArrayList.getCardTemplates().removeIf( cardTemplateInList -> cardTemplateInList.getUuid().equals(UUIDofCardTemplateToDelete));
     }
 
     public String generateHeaderText() {
@@ -54,5 +60,9 @@ public class HomePageService {
             CardTemplate cardTemplate = new CardTemplate();
             cardTemplate.setTypeOfCardTemplate(typeOfCardTemplateToCreate);
         return cardTemplate;
+    }
+
+    public CardTemplateArrayList getCardTemplateArrayList() {
+        return cardTemplateArrayList;
     }
 }

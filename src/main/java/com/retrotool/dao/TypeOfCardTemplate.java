@@ -1,4 +1,4 @@
-package com.retrotool.controller;
+package com.retrotool.dao;
 
 public enum TypeOfCardTemplate {
     POSITIVE,NEGATIVE,NEUTRAL;

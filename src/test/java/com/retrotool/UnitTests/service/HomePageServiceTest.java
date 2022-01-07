@@ -1,19 +1,32 @@
-package com.retrotool.controller;
+package com.retrotool.UnitTests.service;
 
+import com.retrotool.dao.CardTemplate;
+import com.retrotool.dao.CardTemplateArrayList;
+import com.retrotool.dao.TypeOfCardTemplate;
+import com.retrotool.service.HomePageService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+import static org.mockito.Mockito.when;
+@ExtendWith(MockitoExtension.class)
 class HomePageServiceTest {
+    @InjectMocks
     HomePageService homePageService;
+
+    @Mock
+    CardTemplateArrayList cardTemplateArrayList;
 
     @BeforeEach
     public void setUp() {
-         homePageService = new HomePageService();
+         homePageService = new HomePageService(cardTemplateArrayList);
     }
 
 
@@ -32,8 +45,8 @@ class HomePageServiceTest {
         cardTemplates.add(positiveCardTemplate);
         cardTemplates.add(negativeCardTemplate);
         cardTemplates.add(neutralCardTemplate);
-        homePageService.cardTemplates = cardTemplates;
 
+        when(cardTemplateArrayList.getCardTemplates()).thenReturn(cardTemplates);
         List<CardTemplate> resultingCardTemplateList = homePageService.getPositiveCardTemplates();
 
         assertEquals(2,resultingCardTemplateList.size());
@@ -56,7 +69,7 @@ class HomePageServiceTest {
         cardTemplates.add(negativeCardTemplate);
         cardTemplates.add(negativeCardTemplate);
         cardTemplates.add(neutralCardTemplate);
-        homePageService.cardTemplates = cardTemplates;
+        when(cardTemplateArrayList.getCardTemplates()).thenReturn(cardTemplates);
 
         List<CardTemplate> resultingCardTemplateList = homePageService.getNegativeCardTemplates();
 
@@ -80,7 +93,7 @@ class HomePageServiceTest {
         cardTemplates.add(negativeCardTemplate);
         cardTemplates.add(neutralCardTemplate);
         cardTemplates.add(neutralCardTemplate);
-        homePageService.cardTemplates = cardTemplates;
+        when(cardTemplateArrayList.getCardTemplates()).thenReturn(cardTemplates);
 
         List<CardTemplate> resultingCardTemplateList = homePageService.getNeutralCardTemplates();
 
@@ -92,10 +105,13 @@ class HomePageServiceTest {
     @Test
     public void addAPositiveCardTemplateToList() {
         CardTemplate cardTemplate = new CardTemplate();
+        List<CardTemplate> cardTemplates = new ArrayList<>();
+
+        when(cardTemplateArrayList.getCardTemplates()).thenReturn(cardTemplates);
 
         homePageService.addCardTemplate(cardTemplate);
 
-        assertEquals(1,homePageService.cardTemplates.size());
+        assertEquals(1,homePageService.getCardTemplateArrayList().getCardTemplates().size());
 
     }
 
@@ -103,11 +119,11 @@ class HomePageServiceTest {
     public void deleteACardPositiveCardTemplate() {
         CardTemplate cardTemplate = new CardTemplate();
         cardTemplate.setTypeOfCardTemplate(TypeOfCardTemplate.POSITIVE);
-        homePageService.cardTemplates.add(cardTemplate);
+        homePageService.getCardTemplateArrayList().getCardTemplates().add(cardTemplate);
 
         homePageService.deleteCardTemplateWithGivenUUID(cardTemplate.uuid);
 
-        assertEquals(0,homePageService.cardTemplates.size());
+        assertEquals(0,homePageService.getCardTemplateArrayList().getCardTemplates().size());
     }
 
     @Test
@@ -161,7 +177,7 @@ class HomePageServiceTest {
         cardTemplates.add(positiveCardTemplate);
         cardTemplates.add(negativeCardTemplate);
         cardTemplates.add(neutralCardTemplate);
-        homePageService.cardTemplates = cardTemplates;
+        when(cardTemplateArrayList.getCardTemplates()).thenReturn(cardTemplates);
 
         List<CardTemplate> resultingCardTemplateList = homePageService.returnListOfCardTemplatesWithGivenTypeFromMainCollectionOfCardTemplates(TypeOfCardTemplate.POSITIVE);
 
@@ -183,7 +199,7 @@ class HomePageServiceTest {
         cardTemplates.add(negativeCardTemplate);
         cardTemplates.add(negativeCardTemplate);
         cardTemplates.add(neutralCardTemplate);
-        homePageService.cardTemplates = cardTemplates;
+        when(cardTemplateArrayList.getCardTemplates()).thenReturn(cardTemplates);
 
         List<CardTemplate> resultingCardTemplateList = homePageService.returnListOfCardTemplatesWithGivenTypeFromMainCollectionOfCardTemplates(TypeOfCardTemplate.NEGATIVE);
 
@@ -205,7 +221,7 @@ class HomePageServiceTest {
         cardTemplates.add(negativeCardTemplate);
         cardTemplates.add(neutralCardTemplate);
         cardTemplates.add(neutralCardTemplate);
-        homePageService.cardTemplates = cardTemplates;
+        when(cardTemplateArrayList.getCardTemplates()).thenReturn(cardTemplates);
 
         List<CardTemplate> resultingCardTemplateList = homePageService.returnListOfCardTemplatesWithGivenTypeFromMainCollectionOfCardTemplates(TypeOfCardTemplate.NEUTRAL);
 
