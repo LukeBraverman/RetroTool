@@ -2,6 +2,7 @@ package com.retrotool.dao;
 
 import com.retrotool.dao.TypeOfCardTemplate;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
@@ -19,6 +20,7 @@ public class CardTemplate {
     public CardTemplate() {
         uuid = UUID.randomUUID();
     }
+
 
     public String getHeaderText() {
         return headerText;
